@@ -1,11 +1,6 @@
 # compiled output
 /node_modules
 /dist
-.eslintrc.js
-.prettierrc
-package-lock.json
-tsconfig*.json
-nest-cli.json
 
 # Logs
 logs

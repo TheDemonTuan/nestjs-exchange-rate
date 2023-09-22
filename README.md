@@ -16,7 +16,19 @@
 `https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx`
 
 ## Cơ chế cập nhật dữ liệu
-- Tự động cập nhật mỗi 10 phút dựa theo server.
-- Cập nhật lại khi có request vào trang web và thời gian cập nhật lần cuối đến thời điểm hiện tại quá 10 phút
+- Tự động cập nhật mỗi 10 phút dựa theo lần chạy đầu tiên trên server.
+- Cập nhật lại khi có request vào trang web nếu thời gian cập nhật lần cuối tính đến thời điểm hiện tại quá 10 phút
 
+## Thư viện 
+- Sử dụng thư viện xml2js để thực hiện parse lại dữ liệu get ở api sang json để dễ dàng xử lý.
+- Sử dụng thư viện cheerio để lấy các dữ liệu của các element của một source code html cách nhanh và dễ dàng xử lý.
+- Prisma ORM để dễ dàng thao tác đến các cơ sở dữ liệu.
+- Axios để gửi request và nhận response từ các nguồn.
+- EJS Templates dùng để render HTML ở phía server 
 
+## Cách hoạt động
+- Các logic như chỉ cập nhật lại khi dữ liệu đã cũ (quá 10p)
+- Tiến hành dùng axios gọi lên các nguồn dữ liệu tiến hành dùng các thư viện để xử lý các dữ liệu.
+- Thêm lần lượt các dữ liệu đã được xử lý vào database.
+- Lưu lại thời gian cập nhật dữ liệu hiện tại vào database.
+- Mỗi lần request thì controller lấy dữ liệu từ database và trả về cho Views để in ra.

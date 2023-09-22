@@ -112,12 +112,24 @@ export class AppService implements OnModuleInit {
           const sellRate = exrate?.$?.Sell;
 
           // Lưu dữ liệu vào database dùng upsert để vừa update vừa create nếu không tồn tại trong database
-          await this.exchangeRateApiService.create({
-            id: code,
-            currency_name: currencyName,
-            buy_rate: cashRate,
-            transfer_rate: transferRate,
-            sell_rate: sellRate,
+          await this.exchangeRateApiService.upsert({
+            where: {
+              id: code,
+            },
+            update: {
+              id: code,
+              currency_name: currencyName,
+              buy_rate: cashRate,
+              transfer_rate: transferRate,
+              sell_rate: sellRate,
+            },
+            create: {
+              id: code,
+              currency_name: currencyName,
+              buy_rate: cashRate,
+              transfer_rate: transferRate,
+              sell_rate: sellRate,
+            },
           });
         }
         resolve(lastApiUpdate);

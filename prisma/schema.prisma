@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ExchangeRateApi {
+  id            String @id
+  currency_name String
+  buy_rate      String
+  transfer_rate String
+  sell_rate     String
+
+  @@map("exchange_rate_api")
+}
+
+model ExchangeRateApiTime {
+  id               Int    @id
+  api_update_at    String
+  server_update_at String
+
+  @@map("exchange_rate_api_time")
+}
+
+model ExchangeRateRaw {
+  id            String @id
+  currency_name String
+  buy_rate      String
+  transfer_rate String
+  sell_rate     String
+
+  @@map("exchange_rate_raw")
+}
+
+model ExchangeRateRawTime {
+  id               Int    @id
+  api_update_at    String
+  server_update_at String
+
+  @@map("exchange_rate_raw_time")
+}

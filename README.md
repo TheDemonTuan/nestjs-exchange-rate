@@ -14,3 +14,9 @@
 
 `https://www.vietcombank.com.vn/KHCN/Cong-cu-tien-ich/Ty-gia`
 `https://portal.vietcombank.com.vn/Usercontrols/TVPortal.TyGia/pXML.aspx`
+
+## Cơ chế cập nhật dữ liệu
+- Tự động cập nhật mỗi 10 phút dựa theo server.
+- Cập nhật lại khi có request vào trang web và thời gian cập nhật lần cuối đến thời điểm hiện tại quá 10 phút
+
+
